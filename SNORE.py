@@ -291,7 +291,7 @@ def micon(a):
 #done
 #main window
 root=ThemedTk(theme='breeze')#arc,equilux
-root.title('SNORT:Smart Notes & Reminders')
+root.title('SNORE:Smart Notes & Reminders')
 root.geometry('350x500')
 root.iconbitmap('ntsico.ico')
 
