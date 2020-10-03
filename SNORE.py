@@ -107,7 +107,7 @@ def remindr(title,content,colr,remdate,remtime):
         print(dateS,timeS,dateStr,timeStr)
     except:
         print('Err:Less Values or Wrong differentiator used!/nTry again')
-        quit()
+        
 
     #time format chk
     def time_checker(timeStr):
@@ -121,8 +121,8 @@ def remindr(title,content,colr,remdate,remtime):
     try:
         tchk=time_checker(timeStr)
     except:
+        tchk=False
         print('Err:Format Error!/nTry Again')
-        quit()
 
     #24hour time converter
     def army_time(tim):
@@ -140,7 +140,7 @@ def remindr(title,content,colr,remdate,remtime):
         ch,cm=army_time(timeStr)
         print(ch,cm)
     else:
-        quit()
+        return 0
     def plyalrm():
         while True:
             now=datetime.now()
@@ -164,7 +164,7 @@ def remindr(title,content,colr,remdate,remtime):
                 Label(tlrem,image=phto,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
                 Label(tlrem,text='Title-> '+title,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
                 Label(tlrem,text='Note-> '+content,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
-                Button(tlrem,text='Quit',command=tlrem.destroy).pack(side=TOP,fill=BOTH,expand=TRUE)
+                Button(tlrem,text='Quit',command=tlrem.destroy).pack(side=TOP,fill=BOTH,expand=TRUE,relief=GROOVE)
                 tlrem.wm_attributes("-topmost", 1)
                 # root.wm_attributes("-topmost", 1)
                 play_sound()
@@ -291,7 +291,7 @@ def micon(a):
 #done
 #main window
 root=ThemedTk(theme='breeze')#arc,equilux
-root.title('SNORE:Smart Notes & Reminders')
+root.title('SNORT:Smart Notes & Reminders')
 root.geometry('350x500')
 root.iconbitmap('ntsico.ico')
 
@@ -301,8 +301,8 @@ botton_frm.pack(side=BOTTOM,fill=BOTH)
 
 drk_photo=PhotoImage(file='drk.png')
 lght_photo=PhotoImage(file='lght.png')
-db=Button(botton_frm,image=drk_photo,bg='white',command=lambda:dark_md())
-lb=Button(botton_frm,image=lght_photo,bg='white',command=lambda:light_md())
+db=Button(botton_frm,image=drk_photo,bg='white',command=lambda:dark_md(),relief=GROOVE)
+lb=Button(botton_frm,image=lght_photo,bg='white',command=lambda:light_md(),relief=GROOVE)
 db.pack(side=RIGHT)
 lb.pack(side=RIGHT)
 #--CLOCK
@@ -357,7 +357,7 @@ InpNote.pack(side=LEFT,fill=BOTH,expand=YES,padx=2,pady=3)
 micico=PhotoImage(file='microphone.png')
 # mutico=PhotoImage(file='muted.png')
 
-micbtn=Button(inp_notefrm_note,bg='#6ed8ff',image=micico,command=lambda : micon(True))##ceb0ff
+micbtn=Button(inp_notefrm_note,bg='#6ed8ff',image=micico,command=lambda : micon(True),relief=RIDGE)##ceb0ff
 micbtn.pack(side=LEFT,fill=Y,pady=3)
 # mutbtn=Button(inp_notefrm_note,image=mutico,command=lambda : micon(False))
 # mutbtn.pack(side=LEFT,fill=Y,pady=5)
@@ -386,14 +386,14 @@ def callback():
     lstnts.configure(bg=result[1])
     bt.configure(bg=result[1])
     rcolr[0]=(result[1])
-bt=Button(inp_notefrm_optn,command=callback,width=3,bg='#ffffff')
+bt=Button(inp_notefrm_optn,command=callback,width=3,bg='#ffffff',relief=RIDGE)
 bt.pack(side=LEFT,fill=Y,padx=2,pady=3)
 
-add_btn=Button(inp_notefrm_optn,image=addbt,bg='white',command=lambda:inp_note(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
+add_btn=Button(inp_notefrm_optn,relief=GROOVE,image=addbt,bg='white',command=lambda:inp_note(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
 add_btn.pack(side=RIGHT,fill=BOTH,padx=2,pady=3)
-fav_btn=Button(inp_notefrm_optn,image=favbt,bg='white',command=lambda:fav_note(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
+fav_btn=Button(inp_notefrm_optn,relief=GROOVE,image=favbt,bg='white',command=lambda:fav_note(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
 fav_btn.pack(side=RIGHT,fill=BOTH,padx=2,pady=3)
-img_btn=Button(inp_notefrm_optn,image=imgbt,bg='white',command=lambda:ad_img(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
+img_btn=Button(inp_notefrm_optn,relief=GROOVE,image=imgbt,bg='white',command=lambda:ad_img(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0])))
 img_btn.pack(side=LEFT,fill=BOTH,padx=2,pady=3)
     
 #adding reminder to a note
@@ -409,7 +409,7 @@ def add_rem_tl():
 
     ok_frm=Frame(tlr,height=1)
     ok_frm.pack(side=BOTTOM)
-    ok_btn=Button(ok_frm,text='Done',command=lambda:[tlr.destroy(),remindr(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0]),seldate[0],seltim[0])])
+    ok_btn=Button(ok_frm,text='Done',relief=GROOVE,command=lambda:[tlr.destroy(),remindr(str(titl.get()),str(InpNote.get("1.0",'end-1c')),str(rcolr[0]),seldate[0],seltim[0])])
     ok_btn.pack()
 
     #--CLOCK
@@ -448,16 +448,16 @@ def add_rem_tl():
         dtselwin.title('Select Date')
         cal = Calendar(dtselwin)
         cal.pack(fill="both", expand=TRUE,padx=10,pady=10)
-        Button(dtselwin, text="Select", command=lambda:[dtselwin.destroy(),print_sel()]).pack()
+        Button(dtselwin,relief=GROOVE, text="Select", command=lambda:[dtselwin.destroy(),print_sel()]).pack()
         dtselwin.mainloop()
     def tim_pic():
         seltim.append(str(Hr.get())+':'+str(Min.get())+':'+str(AP.get()))
         print(seltim)
-    ttk.Button(tlr,text='Select Time',command=tim_pic).pack(padx=10)
-    ttk.Button(tlr, text='Select Date', command=dat_pic).pack(padx=10)
+    Button(tlr,relief=GROOVE,text='Select Time',command=tim_pic).pack(padx=10)
+    Button(tlr,relief=GROOVE, text='Select Date', command=dat_pic).pack(padx=10)
     tlr.mainloop()
 
-remin_btn=Button(inp_notefrm_optn,image=reminbt,bg='white',command=add_rem_tl)
+remin_btn=Button(inp_notefrm_optn,relief=GROOVE,image=reminbt,bg='white',command=add_rem_tl)
 remin_btn.pack(side=RIGHT,fill=BOTH,padx=2,pady=3)
 
 ######
