@@ -22,6 +22,7 @@ except:
     os.system('pip install threaded')
     # os.system('pip install python-vlc')
     os.system('pip install pipwin')
+    os.system('pip install pygame')
     os.system('pipwin install pyaudio')
     os.system('pip install speechrecognition')
 finally:
