@@ -165,7 +165,7 @@ def remindr(title,content,colr,remdate,remtime):
                 Label(tlrem,image=phto,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
                 Label(tlrem,text='Title-> '+title,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
                 Label(tlrem,text='Note-> '+content,bg=colr).pack(side=TOP,fill=BOTH,expand=TRUE)
-                Button(tlrem,text='Quit',command=tlrem.destroy).pack(side=TOP,fill=BOTH,expand=TRUE,relief=GROOVE)
+                Button(tlrem,text='Quit',command=tlrem.destroy).pack(side=TOP,fill=BOTH,expand=TRUE)
                 tlrem.wm_attributes("-topmost", 1)
                 # root.wm_attributes("-topmost", 1)
                 play_sound()
