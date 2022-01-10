@@ -1,2 +1,2 @@
-# SNORT-SmartNotes-Reminders
+# SNORE-SmartNotes-Reminders
  Smart notes & reminder
